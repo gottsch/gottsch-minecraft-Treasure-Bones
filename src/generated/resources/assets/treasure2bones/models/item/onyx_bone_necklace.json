@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "treasure2bones:item/adornments/onyx_bone_necklace"
+  }
+}

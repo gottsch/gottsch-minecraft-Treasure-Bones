@@ -1,0 +1,34 @@
+{
+  "version" : "1.0",
+  "since" : "mc1.16.5-v1.0.0",
+  "pools" : [ {
+    "name" : "legendary_keys",
+    "rolls" : 1,
+    "entries" : [ {
+      "entryName" : "bone_key",
+      "type" : "item",
+      "name" : "treasure2bones:bone_key",
+      "weight" : 1,
+      "functions" : [ {
+        "function" : "set_count",
+        "count" : {
+          "min" : 1,
+          "max" : 2
+        }
+      } ]
+    } ]
+  }, {
+    "name" : "legendary_treasure",
+    "rolls" : 1,
+    "entries" : [ {
+      "entryName" : "skeletons_heart",
+      "type" : "item",
+      "name" : "treasure2bones:skeletons_heart",
+      "weight" : 1,
+      "conditions" : [ {
+        "condition" : "random_chance",
+        "chance" : 0.5
+      } ]
+    } ]
+  } ]
+}

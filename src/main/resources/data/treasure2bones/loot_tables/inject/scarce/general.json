@@ -1,0 +1,17 @@
+{
+	"version": "1.0",
+	"categories": [
+		"general"
+	],
+	"pools": [{
+		"name": "treasure",
+		"rolls": 1,
+		"entries": [
+			{
+				"type": "loot_table",
+				"name": "treasure2bones:pools/treasure/scarce_all",
+				"weight": 1
+			}
+		]
+	}]
+}

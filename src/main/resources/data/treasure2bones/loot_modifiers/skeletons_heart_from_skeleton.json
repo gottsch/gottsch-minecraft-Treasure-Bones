@@ -1,0 +1,8 @@
+{
+  "conditions" : [ {
+    "condition" : "forge:loot_table_id",
+    "loot_table_id" : "minecraft:entities/skeleton"
+  } ],
+  "addition" : "treasure2bones:skeletons_heart",
+  "type" : "treasure2bones:skeletons_heart_from_skeleton"
+}

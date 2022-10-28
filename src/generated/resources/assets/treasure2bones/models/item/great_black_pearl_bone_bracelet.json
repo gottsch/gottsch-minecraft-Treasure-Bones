@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "treasure2bones:item/adornments/great_black_pearl_bone_bracelet"
+  }
+}

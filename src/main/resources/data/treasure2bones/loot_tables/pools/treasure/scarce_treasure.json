@@ -1,0 +1,18 @@
+{
+  "version" : "1.0",
+  "since" : "mc1.16.5-v1.0.0",
+  "pools" : [ {
+    "name" : "scarce_keys",
+    "rolls" : 1,
+    "entries" : [ {
+      "entryName" : "bone_key",
+      "type" : "item",
+      "name" : "treasure2bones:bone_key",
+      "weight" : 1,
+      "conditions" : [ {
+        "condition" : "random_chance",
+        "chance" : 0.2
+      } ]
+    } ]
+  } ]
+}

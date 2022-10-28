@@ -1,0 +1,44 @@
+{
+	"supportingResources": [
+		"pools/treasure/scarce_adornments",
+		"pools/treasure/scarce_all",
+		"pools/treasure/scarce_treasure",
+		"pools/treasure/rare_adornments",
+		"pools/treasure/rare_all",
+		"pools/treasure/rare_treasure",
+		"pools/treasure/epic_adornments",
+		"pools/treasure/epic_all",
+		"pools/treasure/epic_treasure",		
+		"pools/treasure/legendary_adornments",
+		"pools/treasure/legendary_all",
+		"pools/treasure/legendary_treasure",
+		"pools/treasure/mythical_adornments",
+		"pools/treasure/mythical_all",
+		"pools/treasure/mythical_treasure"
+    ],
+    "injectResources": [
+    	"inject/scarce/general",
+    	"inject/rare/general",
+    	"inject/epic/general",
+    	"inject/legendary/general",
+    	"inject/scarce/mythical"
+    ],
+	"chestResources": [
+	],
+	"specialResources": [
+	],
+	"chestLootTableFolderLocations": [
+	],
+	"specialLootTableFolderLocations": [
+	],
+	"supportingLootTableFolderLocations": [
+		"pools/treasure"
+    ],
+    "injectLootTableFolderLocations": [
+    	"inject/scarce",
+    	"inject/rare",
+    	"inject/epic",
+		"inject/legendary",
+		"inject/mythical"
+    ]
+}
