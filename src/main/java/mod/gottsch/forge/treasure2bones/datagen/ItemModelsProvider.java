@@ -41,6 +41,10 @@ public class ItemModelsProvider extends ItemModelProvider {
         singleTexture(ModItems.BONE_KEY.get().getRegistryName().getPath(),
         		mcLoc("item/generated"), "layer0", modLoc("item/keys/bone_key"));
         
+        // locks
+        singleTexture(ModItems.BONE_LOCK.get().getRegistryName().getPath(),
+        		mcLoc("item/generated"), "layer0", modLoc("item/keys/bone_lock"));
+        
         // gems
         singleTexture(ModItems.SKELETONS_HEART.get().getRegistryName().getPath(),
         		mcLoc("item/generated"), "layer0", modLoc("item/skeletons_heart"));

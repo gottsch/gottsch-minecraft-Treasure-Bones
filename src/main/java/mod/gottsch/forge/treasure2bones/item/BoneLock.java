@@ -36,6 +36,10 @@ import net.minecraft.world.World;
  */
 public class BoneLock extends LockItem {
 
+	/**
+	 * NOTE lock is not added to any item tab.
+	 * @param properties
+	 */
 	public BoneLock(Properties properties) {
 		super(properties);
 	}
@@ -45,7 +49,6 @@ public class BoneLock extends LockItem {
 	}
 
 	/**
-	 * NOTE this is moot as a BoneLock item doesn't exist as a registered Item
 	 * @param tileEntity
 	 * @param player
 	 * @param heldItem

@@ -92,7 +92,7 @@ public class ModItems {
 					.setRarity(Rarity.SCARCE)
 					.setCraftable(false));
 
-	// locks - TEMP?
+	// locks
 	public static RegistryObject<LockItem> BONE_LOCK = 
 			Registration.ITEMS.register("bone_lock", () -> new BoneLock(new Item.Properties())
 			.setCategory(Category.ELEMENTAL)
