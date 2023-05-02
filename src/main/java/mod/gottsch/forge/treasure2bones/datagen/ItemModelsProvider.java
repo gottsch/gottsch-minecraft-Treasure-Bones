@@ -38,12 +38,12 @@ public class ItemModelsProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         // keys
-        singleTexture(ModItems.BONE_KEY.get().getRegistryName().getPath(),
-        		mcLoc("item/generated"), "layer0", modLoc("item/keys/bone_key"));
+//        singleTexture(ModItems.BONE_KEY.get().getRegistryName().getPath(),
+//        		new ResourceLocation(Treasure.MODID, "item/horizontal_left_key"), "layer0", modLoc("item/keys/bone_key"));
         
         // locks
         singleTexture(ModItems.BONE_LOCK.get().getRegistryName().getPath(),
-        		mcLoc("item/generated"), "layer0", modLoc("item/keys/bone_lock"));
+        		mcLoc("item/generated"), "layer0", modLoc("item/locks/bone_lock"));
         
         // gems
         singleTexture(ModItems.SKELETONS_HEART.get().getRegistryName().getPath(),

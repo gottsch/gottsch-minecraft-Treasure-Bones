@@ -38,10 +38,7 @@ import com.someguyssoftware.treasure2.capability.RunestonesCapability;
 import com.someguyssoftware.treasure2.capability.RunestonesCapabilityProvider;
 import com.someguyssoftware.treasure2.capability.modifier.GreatAdornmentLevelModifier;
 import com.someguyssoftware.treasure2.capability.modifier.NoLevelModifier;
-import com.someguyssoftware.treasure2.charm.Charm;
-import com.someguyssoftware.treasure2.charm.DecayCurse;
-import com.someguyssoftware.treasure2.charm.DrainCharm;
-import com.someguyssoftware.treasure2.charm.TreasureCharmRegistry;
+import com.someguyssoftware.treasure2.charm.*;
 import com.someguyssoftware.treasure2.enums.AdornmentType;
 import com.someguyssoftware.treasure2.enums.Category;
 import com.someguyssoftware.treasure2.enums.Rarity;
@@ -58,6 +55,7 @@ import com.someguyssoftware.treasure2.rune.IRuneEntity;
 import com.someguyssoftware.treasure2.util.ModUtils;
 
 import mod.gottsch.forge.treasure2bones.TreasureBones;
+import mod.gottsch.forge.treasure2bones.charm.BoneBusterCharm;
 import mod.gottsch.forge.treasure2bones.charm.ModCharms;
 import mod.gottsch.forge.treasure2bones.rune.BonesManaRune;
 import mod.gottsch.forge.treasure2bones.rune.ModRunes;
@@ -124,65 +122,53 @@ public class ModItems {
 			});
 
 	// adornments
-	public static RegistryObject<Adornment>BONES_BANE = Registration.ITEMS.register("bones_bane", 
-			() -> new NamedAdornment(AdornmentType.RING, TreasureAdornmentRegistry.GREAT, ITEM_PROPERTIES.get()) {
-		public ICapabilityProvider initCapabilities(ItemStack stack, CompoundNBT nbt) {
-
-			/*
-			 *  add enchantment. kinda hacky
-			 */
-			if (!EnchantmentHelper.hasVanishingCurse(stack)) {
-				stack.enchant(Enchantments.VANISHING_CURSE, 1);
-			}
-
-			ICharmableCapability cap = new CharmableCapability.Builder(3, 1, 0).with($ -> {
-				$.innate = true;
-				$.imbuable = true;
-				$.socketable = true;
-				$.source = false;
-				$.executing = true;
-				$.namedByCharm = false;
-				$.namedByMaterial = false;
-				$.baseMaterial = TreasureCharmableMaterials.BONE.getName();
-				$.sourceItem = SKELETONS_HEART.get().getRegistryName();
-				$.levelModifier = new GreatAdornmentLevelModifier();
-			}).build();
-			cap.getCharmEntities().get(InventoryType.INNATE).add(ModCharms.makeBoneBuster(30).createEntity());
-			cap.getCharmEntities().get(InventoryType.INNATE).add(TreasureCharmRegistry.get(ModUtils.asLocation(Charm.Builder.makeName(DrainCharm.DRAIN_TYPE, 16))).get().createEntity());
-			cap.getCharmEntities().get(InventoryType.INNATE).add(TreasureCharmRegistry.get(ModUtils.asLocation(Charm.Builder.makeName(DecayCurse.DECAY_TYPE, 10))).get().createEntity());
-			
-			IDurabilityCapability durabilityCap = new DurabilityCapability(500, 500, TreasureCharmableMaterials.BONE);
-			durabilityCap.setInfinite(true);
-			IRunestonesCapability runestonesCap = new RunestonesCapability.Builder(1, 0, 1).with($ -> {
-				$.socketable = true;
-			}).build();
-			IRuneEntity runeEntity = ModRunes.RUNE_OF_BONES_AS_MANA.createEntity();	
-			runestonesCap.add(InventoryType.INNATE, runeEntity);
-			((BonesManaRune)runeEntity.getRunestone()).initCapabilityApply(cap, runeEntity);
-			
-			return new AdornmentCapabilityProvider(cap, runestonesCap, durabilityCap);
-		}
-	});
-	
-	//	public static RegistryObject<Adornment> TEST = Registration.ITEMS.register("onyx_bone_ring", () -> new Adornment(AdornmentType.RING, TreasureAdornmentRegistry.STANDARD, new Item.Properties()) {
-	//		public ICapabilityProvider initCapabilities(ItemStack stack, CompoundNBT nbt) {
-	//			ICharmableCapability cap = new CharmableCapability.Builder(0, 0, 0).with($ -> {
-	//				$.innate = false;
-	//				$.imbuable = false;
-	//				$.socketable = true;
-	//				$.source = false;
-	//				$.executing = true;
-	//				$.baseMaterial = TreasureCharmableMaterials.GOLD.getName();
-	//				$.sourceItem = TreasureItems.ONYX.get().getRegistryName();
-	//				$.levelModifier = new GreatAdornmentLevelModifier();
-	//			}).build();
-	//			IDurabilityCapability durabilityCap = new DurabilityCapability(1000, 1000, TreasureCharmableMaterials.GOLD);
-	//			IRunestonesCapability runestonesCap = new RunestonesCapability.Builder(0, 0, 2).with($ -> {
-	//				$.socketable = true;
-	//			}).build();
-	//			return new AdornmentCapabilityProvider(cap, runestonesCap, durabilityCap);
-	//		}
-	//	});
+	public static RegistryObject<Adornment> BONES_BANE = Registration.ITEMS.register("bones_bane", 
+			() -> new /*NamedAdornment*/BonesBane(AdornmentType.RING, TreasureAdornmentRegistry.GREAT, ITEM_PROPERTIES.get()));
+//			{
+//		public ICapabilityProvider initCapabilities(ItemStack stack, CompoundNBT nbt) {
+//
+//			/*
+//			 *  add enchantment. kinda hacky
+//			 */
+//			if (!EnchantmentHelper.hasVanishingCurse(stack)) {
+//				stack.enchant(Enchantments.VANISHING_CURSE, 1);
+//			}
+//
+//			ICharmableCapability cap = new CharmableCapability.Builder(3, 1, 0).with($ -> {
+//				$.innate = true;
+//				$.imbuable = true;
+//				$.socketable = true;
+//				$.source = false;
+//				$.executing = true;
+//				$.namedByCharm = false;
+//				$.namedByMaterial = false;
+//				$.baseMaterial = TreasureCharmableMaterials.BONE.getName();
+//				$.sourceItem = SKELETONS_HEART.get().getRegistryName();
+//				$.levelModifier = new GreatAdornmentLevelModifier();
+//			}).build();
+//			
+//			ICharmEntity e1 = ModCharms.makeBoneBuster(30).createEntity();
+//			ICharmEntity e2 = TreasureCharmRegistry.get(ModUtils.asLocation(Charm.Builder.makeName(BoneBusterCharm.TYPE, 30))).get().createEntity();
+////			cap.getCharmEntities().get(InventoryType.INNATE).add(ModCharms.makeBoneBuster(30).createEntity());
+//			cap.getCharmEntities().get(InventoryType.INNATE).add(TreasureCharmRegistry.get(ModUtils.asLocation(Charm.Builder.makeName(BoneBusterCharm.TYPE, 30))).get().createEntity());
+//			cap.getCharmEntities().get(InventoryType.INNATE).add(TreasureCharmRegistry.get(ModUtils.asLocation(Charm.Builder.makeName(DrainCharm.DRAIN_TYPE, 16))).get().createEntity());
+////			cap.getCharmEntities().get(InventoryType.INNATE).add(TreasureCharmRegistry.get(ModUtils.asLocation(Charm.Builder.makeName(DecayCurse.DECAY_TYPE, 10))).get().createEntity());
+//			
+//			IDurabilityCapability durabilityCap = new DurabilityCapability(500, 500, TreasureCharmableMaterials.BONE);
+//			durabilityCap.setInfinite(true);
+//			
+//			IRunestonesCapability runestonesCap = new RunestonesCapability.Builder(1, 0, 1).with($ -> {
+//				$.socketable = true;
+//			}).build();
+//			
+//			IRuneEntity runeEntity = ModRunes.RUNE_OF_BONES_AS_MANA.createEntity();	
+//			runestonesCap.add(InventoryType.INNATE, runeEntity);
+//			
+//			((BonesManaRune)runeEntity.getRunestone()).initCapabilityApply(cap, runeEntity);
+//			
+//			return new AdornmentCapabilityProvider(cap, runestonesCap, durabilityCap);
+//		}
+//	});
 
 	static {
 		AdornmentItemsBuilder builder = new AdornmentItemsBuilder(TreasureBones.MODID);
@@ -202,13 +188,6 @@ public class ModItems {
 			ADORNMENT_ITEMS.put(new ResourceLocation(TreasureBones.MODID, a.getLeft()), adornment);
 		});
 	}
-
-	// locks
-	// NOTE BoneLock is not registered as a game item. It is used internally in a Bone Chest and therefor only needs to be a back-end class
-	// NOTE since BoneLock is NOT a RegistryObject in a DeferredRegistry, it needs to finishes its initialized in the RegistryEvent
-//	public static LockItem BONE_LOCK = new BoneItem(new Item.Properties())
-//			.setCategory(Category.ELEMENTAL)
-//			.setRarity(Rarity.SCARCE);
 	
 	/**
 	 * 

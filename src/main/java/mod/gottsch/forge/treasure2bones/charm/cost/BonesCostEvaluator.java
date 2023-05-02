@@ -30,7 +30,7 @@ public class BonesCostEvaluator extends CostEvaluator {
 	}
 	
 	public BonesCostEvaluator(ICostEvaluator evaluator) {
-//		Treasure.LOGGER.debug("receiving child evaluator of -> {}", evaluator.getClass().getSimpleName());
+		Treasure.LOGGER.debug("receiving child evaluator of -> {}", evaluator.getClass().getSimpleName());
 		this.evaluator = evaluator;
 	}
 	
@@ -59,7 +59,7 @@ public class BonesCostEvaluator extends CostEvaluator {
 
 		// if not damaged, process against default evaluator
 		if (!isBoneConsumed) {
-			Treasure.LOGGER.debug("no bone consumed, use mana using cost eval ->{}", evaluator.getClass().getSimpleName());
+			Treasure.LOGGER.debug("no bone consumed, use mana using cost eval ->{}", evaluator.getClass().getSimpleName()); // evaluator is null
 			// execute the orignal evaluator
 			newAmount = entity.getCharm().getCostEvaluator().apply(world, random, coords, player, event, entity, amount);
 		}		
@@ -72,7 +72,7 @@ public class BonesCostEvaluator extends CostEvaluator {
 			super.save(nbt); // save my className to nbt
 			
 			CompoundNBT tag = new CompoundNBT();		
-			evaluator.save(tag);
+			evaluator.save(tag); // TODO this is null ????
 			nbt.put("evaluator", tag);
 		}
 		catch(Exception e) {
@@ -85,12 +85,12 @@ public class BonesCostEvaluator extends CostEvaluator {
 	public void load(CompoundNBT nbt) {
 		try {
 		super.load(nbt);
-//		Treasure.logger.debug("loading equipment cost eval...");
+		Treasure.LOGGER.debug("loading bones cost eval...");
 		if (nbt.contains("evaluator") && nbt.getCompound("evaluator").contains("costClass")) {
 			try {
 				CompoundNBT tag = nbt.getCompound("evaluator");
 					String costEvalClass = nbt.getString("costClass");
-//					Treasure.logger.debug("child cost class -> {}", costEvalClass);
+					Treasure.LOGGER.debug("child cost class -> {}", costEvalClass);
 					Object o = Class.forName(costEvalClass).newInstance();
 					((ICostEvaluator)o).load(tag);
 					this.evaluator = (ICostEvaluator)o;

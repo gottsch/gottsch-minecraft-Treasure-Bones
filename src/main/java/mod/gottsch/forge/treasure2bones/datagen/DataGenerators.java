@@ -26,6 +26,8 @@ import org.apache.commons.lang3.tuple.Pair;
 import com.someguyssoftware.treasure2.adornment.TreasureAdornmentRegistry;
 import com.someguyssoftware.treasure2.capability.modifier.GreatAdornmentLevelModifier;
 import com.someguyssoftware.treasure2.capability.modifier.NoLevelModifier;
+import com.someguyssoftware.treasure2.datagen.TreasureBlockTagsProvider;
+import com.someguyssoftware.treasure2.datagen.TreasureItemTagsProvider;
 import com.someguyssoftware.treasure2.enums.AdornmentType;
 import com.someguyssoftware.treasure2.item.Adornment;
 import com.someguyssoftware.treasure2.item.TreasureItems.AdornmentItemsBuilder;
@@ -69,14 +71,14 @@ public class DataGenerators {
 		if (event.includeServer()) {
 			//            generator.addProvider(new Recipes(generator));
 			//            generator.addProvider(new LootTables(generator));
-			//            BlockTagsGen blockTags = new BlockTagsGen(generator, event.getExistingFileHelper());
-			//            generator.addProvider(blockTags);
-			//            generator.addProvider(new DDItemTags(generator, blockTags, event.getExistingFileHelper()));
+        	TreasureBonesBlockTagsProvider blockTags = new TreasureBonesBlockTagsProvider(generator, event.getExistingFileHelper());
+            generator.addProvider(blockTags);
+            generator.addProvider(new TreasureBonesItemTagsProvider(generator, blockTags, event.getExistingFileHelper()));
 		}
 		if (event.includeClient()) {
 			//            generator.addProvider(new BlockStates(generator, event.getExistingFileHelper()));
 			generator.addProvider(new ItemModelsProvider(generator, event.getExistingFileHelper(), names));
-			generator.addProvider(new LanguageGen(generator, "en_us"));
+//			generator.addProvider(new LanguageGen(generator, "en_us"));
 		}
 	}
 }

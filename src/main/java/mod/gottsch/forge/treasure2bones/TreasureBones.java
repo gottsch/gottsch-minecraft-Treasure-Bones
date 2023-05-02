@@ -20,6 +20,7 @@ package mod.gottsch.forge.treasure2bones;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import mod.gottsch.forge.treasure2bones.charm.ModCharms;
 import mod.gottsch.forge.treasure2bones.eventhandler.WorldEventHandler;
 import mod.gottsch.forge.treasure2bones.item.ModItems;
 import mod.gottsch.forge.treasure2bones.setup.CommonSetup;
@@ -44,7 +45,7 @@ public class TreasureBones {
 	 */
 	public TreasureBones() {
 		TreasureBones.instance = this;
-
+		ModCharms.init();
 		// register the deferred registries
 		//		ModBlocks.register();
 		ModItems.register();

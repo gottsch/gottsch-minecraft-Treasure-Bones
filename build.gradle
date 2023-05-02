@@ -152,8 +152,8 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.16.5-36.2.34'
 	//compileOnly fg.deobf("someguyssoftware.gottschcore:GottschCore:mc1.16.5-f36.2.34-v1.6.0")
 	compileOnly fg.deobf("curse.maven:gottschcore-272450:4011129")
-	//compileOnly fg.deobf("curse.maven:treasure2-289760:4011476")
-	compileOnly fg.deobf("gottsch:Treasure-1.16.5:mc1.16.5-f36.2.34-v2.3.0")
+	//compileOnly fg.deobf("curse.maven:treasure2-289760:4446137")
+	compileOnly fg.deobf("gottsch:Treasure-1.16.5:mc1.16.5-f36.2.34-v2.5.0")
 
 }
 

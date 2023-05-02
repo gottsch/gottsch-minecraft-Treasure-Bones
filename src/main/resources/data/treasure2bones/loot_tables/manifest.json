@@ -21,7 +21,7 @@
     	"inject/rare/general",
     	"inject/epic/general",
     	"inject/legendary/general",
-    	"inject/scarce/mythical"
+    	"inject/scarce/general"
     ],
 	"chestResources": [
 	],

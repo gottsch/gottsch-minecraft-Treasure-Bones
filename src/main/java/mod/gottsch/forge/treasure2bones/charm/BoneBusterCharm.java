@@ -77,11 +77,12 @@ public class BoneBusterCharm extends Charm {
 		
 		public Builder(Integer level) {
 			super(ModUtils.asLocation(makeName(TYPE, level)), TYPE, level);
+			int i = 0;
 		}
 		
 		@Override
 		public ICharm build() {
-			return  new BoneBusterCharm(this);
+			return new BoneBusterCharm(this);
 		}
 	}
 }

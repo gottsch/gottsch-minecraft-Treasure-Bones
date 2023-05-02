@@ -11,6 +11,14 @@ import com.someguyssoftware.treasure2.charm.TreasureCharms;
  */
 public class ModCharms {
 
+	static {
+		for (int level = 1; level <= 35; level++) {
+			TreasureCharmRegistry.register(makeBoneBuster(level));
+		}
+	}
+	
+	public static void init() {}
+	
 	/**
 	 * 
 	 * @param level
@@ -27,9 +35,10 @@ public class ModCharms {
 		return charm;
 	}
 
+	// TODO why can't i make these in a static
 	public static void register() {
-		for (int level = 1; level <= 35; level++) {
-			TreasureCharmRegistry.register(makeBoneBuster(level));
-		}
+//		for (int level = 1; level <= 35; level++) {
+//			TreasureCharmRegistry.register(makeBoneBuster(level));
+//		}
 	}
 }

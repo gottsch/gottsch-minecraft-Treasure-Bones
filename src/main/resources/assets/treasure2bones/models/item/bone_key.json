@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "treasure2:item/horizontal_left_key",
   "textures": {
     "layer0": "treasure2bones:item/keys/bone_key"
   }

@@ -48,16 +48,18 @@ public class ModBlocks {
 			/*
 			 *  block shapes
 			 */
-			VoxelShape vanillaChestShape = Block.box(1, 0, 1, 15, 14, 15);
+			VoxelShape vanillaChestShape = Block.box(1, 0, 1, 15, 15, 15);
 			VoxelShape[] standardChestBounds = new VoxelShape[] {vanillaChestShape, vanillaChestShape, vanillaChestShape, vanillaChestShape};
 
 			BONE_CHEST = new BoneChestBlock(TreasureBones.MODID, "bone_chest", BoneChestTileEntity.class,
 					TreasureChestTypes.SINGLE_STANDARD, Rarity.SCARCE, Block.Properties.of(Material.STONE, MaterialColor.STONE).strength(3F))
 					.setBounds(standardChestBounds);
 
+			// register block with forge
 			final IForgeRegistry<Block> registry = event.getRegistry();
 			registry.register(BONE_CHEST);
 
+			// register chest with Treasure2
 			TreasureData.CHESTS_BY_RARITY.put(((StandardChestBlock) BONE_CHEST).getRarity(), BONE_CHEST);
 			TreasureData.CHESTS_BY_NAME.put(BONE_CHEST.getRegistryName().getPath(), BONE_CHEST);
 		}
